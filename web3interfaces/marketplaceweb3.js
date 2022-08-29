@@ -15,7 +15,7 @@ class HavenXMarketplace {
      * @dev Connect to the blockachain and interact with 
      * the marketplace smart contract methods.
      * 
-     * @param {string} provider 
+     * @param {string} provider Blockchain node provider.
      * @returns {string} connected successfully
      */
     constructor(provider) {
@@ -40,7 +40,7 @@ class HavenXMarketplace {
      * @returns {Number} new item id
      */
     listNft = async (nftCollectionContract, tokenid, amount) => {
-  
+
         return await this.marketcontract.methods.listNft(nftCollectionContract, tokenid, amount).send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
@@ -55,7 +55,7 @@ class HavenXMarketplace {
      * @returns {true} true
      */
     buyListing = async (listingid, currencycontract, amount) => {
-        
+
         return await this.marketcontract.methods.buyNft(listingid, currencycontract, amount).send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
@@ -71,7 +71,7 @@ class HavenXMarketplace {
      * @returns {number} new item id
      */
     auctionNft = async (collectioncontract, tokenId, endtime, amount) => {
-       
+
         return await this.marketcontract.methods.placeAuction(collectioncontract, tokenId, endtime, amount).send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
@@ -85,84 +85,84 @@ class HavenXMarketplace {
      * @returns {true}
      */
     bidAuctionedNft = async (auctionId, amount) => {
-        
+
         return await this.marketcontract.methods.bid(auctionId, amount).send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     cancelDirectListing = async () => {
-        
+
         return await this.marketcontract.methods.cancelListing().send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     cancelAuctionedItem = async () => {
-        
+
         return await this.marketcontract.methods.cancelAuction().send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     createNewUser = async () => {
-    
+
         return await this.marketcontract.methods.createUser().send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     withdrawBid = async () => {
-       
+
         return await this.marketcontract.methods.withdrawUnderBid().send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     claimHighestBid = async () => {
-        
+
         return await this.marketcontract.methods.withdrawHighestBid().send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     claimWonNft = async () => {
-        
+
         return await this.marketcontract.methods.claimNft().send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     getAllMarketAuctions = async () => {
-        
+
         return await this.marketcontract.methods.getAllAuctions().call()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     getAllMarketListings = async () => {
-      
+
         return await this.marketcontract.methods.getAllListings().call()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     getTokenUriById = async () => {
-        
+
         return await this.marketcontract.methods.getTokenUri().call()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     getListingById_ = async () => {
-        
+
         return await this.marketcontract.methods.getListingById().call()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
     isUserVerified = async () => {
-        
+
         return await this.marketcontract.methods.isVerified().call()
             .then((data) => { return data; })
             .catch((err) => { return err; });
