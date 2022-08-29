@@ -12,6 +12,8 @@ const marketContractAddress = process.env.MARKET_PLACE_ADDRESS
 
 class HavenXMarketplace {
     /**
+     * @dev Connect to the blockachain and interact with 
+     * the marketplace smart contract methods.
      * 
      * @param {string} provider 
      * @returns {string} connected successfully
