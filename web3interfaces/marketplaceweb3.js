@@ -12,9 +12,14 @@ const marketContractAddress = process.env.MARKET_PLACE_ADDRESS
 
 class HavenXMarketplace {
     constructor(provider) {
-        Contract.setProvider(provider);
-        this.marketcontract = new Contract(JSON.parse(abi), marketContractAddress)
-        console.log(this.marketcontract)
+        try {
+            Contract.setProvider(provider)
+            this.marketcontract = new Contract(JSON.parse(abi), marketContractAddress)
+            console.log(this.marketcontract)
+        } catch (error) {
+            console.log(error)
+            return 'Error occured while connecting to the blockachain.'
+        }
     }
 
     /**
@@ -23,6 +28,8 @@ class HavenXMarketplace {
      * @param {String} nftCollectionContract 
      * @param {Number} tokenid 
      * @param {Number} amount 
+     * 
+     * @returns {Number} new item id
      */
     listNft = async (nftCollectionContract, tokenid, amount) => {
   
