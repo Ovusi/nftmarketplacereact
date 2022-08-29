@@ -11,11 +11,17 @@ const marketContractAddress = process.env.MARKET_PLACE_ADDRESS
 
 
 class HavenXMarketplace {
+    /**
+     * 
+     * @param {string} provider 
+     * @returns {string} connected successfully
+     */
     constructor(provider) {
         try {
             Contract.setProvider(provider)
             this.marketcontract = new Contract(JSON.parse(abi), marketContractAddress)
             console.log('Connected to the blockchain successfully.')
+            return 'Connected to the blockchain successfully.'
         } catch (error) {
             console.log(error)
             return 'Error occured while connecting to the blockachain.'
