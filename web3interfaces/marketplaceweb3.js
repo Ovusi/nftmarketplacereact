@@ -1,4 +1,3 @@
-const Web3 = require('web3');
 const Contract = require('web3-eth-contract')
 require("dotenv").config()
 const abi = process.env.ABI
@@ -14,7 +13,6 @@ class HavenXMarketplace {
     /**
      * @dev Connect to the blockachain and interact with 
      * the marketplace smart contract methods.
-     * 
      * @param {string} provider Blockchain node provider.
      * @returns {string} connected successfully
      */
@@ -32,7 +30,6 @@ class HavenXMarketplace {
 
     /**
      * @dev This function lists an NFT on the marketplace
-     * 
      * @param {String} nftCollectionContract 
      * @param {Number} tokenid 
      * @param {Number} amount 
