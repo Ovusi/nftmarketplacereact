@@ -15,7 +15,7 @@ class HavenXMarketplace {
         try {
             Contract.setProvider(provider)
             this.marketcontract = new Contract(JSON.parse(abi), marketContractAddress)
-            console.log(this.marketcontract)
+            console.log('Connected to the blockchain successfully.')
         } catch (error) {
             console.log(error)
             return 'Error occured while connecting to the blockachain.'
@@ -38,6 +38,14 @@ class HavenXMarketplace {
             .catch((err) => { return err; });
     };
 
+    /**
+     * @dev Buy an nft listing on the marketplace.
+     * 
+     * @param {Number} listingid 
+     * @param {string} currencycontract 
+     * @param {number} amount 
+     * @returns {true} true
+     */
     buyListing = async (listingid, currencycontract, amount) => {
         
         return await this.marketcontract.methods.buyNft(listingid, currencycontract, amount).send()
@@ -45,16 +53,32 @@ class HavenXMarketplace {
             .catch((err) => { return err; });
     };
 
-    auctionNft = async () => {
+    /**
+     * @dev auction an item on the marketplace
+     * 
+     * @param {string} collectioncontract 
+     * @param {number} tokenId 
+     * @param {number} endtime Unix time format 
+     * @param {number} amount 
+     * @returns {number} new item id
+     */
+    auctionNft = async (collectioncontract, tokenId, endtime, amount) => {
        
-        return await this.marketcontract.methods.placeAuction().send()
+        return await this.marketcontract.methods.placeAuction(collectioncontract, tokenId, endtime, amount).send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
 
-    bidAuctionedNft = async () => {
+    /**
+     * @dev Bid on an auctioned item.
+     * 
+     * @param {number} auctionId 
+     * @param {number} amount 
+     * @returns {true}
+     */
+    bidAuctionedNft = async (auctionId, amount) => {
         
-        return await this.marketcontract.methods.bid().send()
+        return await this.marketcontract.methods.bid(auctionId, amount).send()
             .then((data) => { return data; })
             .catch((err) => { return err; });
     };
