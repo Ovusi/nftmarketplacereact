@@ -7,10 +7,10 @@ class DeployCollection {
      * @dev Connect to the blockchain and deploy a new
      * nft collection to the blockchain.
      * @param {string} account hexadecimal adress hash
-     * @param {string} provider_ 
-     * @param {string} name 
-     * @param {string} symbol 
-     * @returns {string}
+     * @param {string} provider_ Current blockchain provider
+     * @param {string} name Name of NFT collection
+     * @param {string} symbol Collection symbol
+     * @returns {string} Success or error message
      */
     constructor(account, provider_, name, symbol) {
         try {
@@ -39,7 +39,7 @@ class DeployCollection {
 
     /**
      * @dev Call to deploy collection to the blockchain.
-     * @returns {string} New contract address.
+     * @returns {Promise<string>} New contract address.
      */
     deploy_collection = async () => {
         await this.deploy_contract.deploy(this.payload).send(this.parameter, (err, transactionHash) => {

@@ -34,7 +34,7 @@ class HavenXMarketplace {
      * @param {Number} tokenid 
      * @param {number} amount 
      * 
-     * @returns {Number} new item id
+     * @returns {Promise<number>} new item id
      */
     listNft = async (nftCollectionContract, tokenid, amount) => {
 
