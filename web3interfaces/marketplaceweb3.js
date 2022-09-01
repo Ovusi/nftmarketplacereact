@@ -32,15 +32,15 @@ class HavenXMarketplace {
      * @dev This function lists an NFT on the marketplace
      * @param {String} nftCollectionContract 
      * @param {Number} tokenid 
-     * @param {Number} amount 
+     * @param {number} amount 
      * 
      * @returns {Number} new item id
      */
     listNft = async (nftCollectionContract, tokenid, amount) => {
 
         return await this.marketcontract.methods.listNft(nftCollectionContract, tokenid, amount).send()
-            .then((data) => { return data; })
-            .catch((err) => { return err; });
+            .then(data => { return data; })
+            .catch(err => { return err; });
     };
 
     /**
@@ -49,7 +49,7 @@ class HavenXMarketplace {
      * @param {Number} listingid 
      * @param {string} currencycontract 
      * @param {number} amount 
-     * @returns {true} true
+     * @returns {Promise<boolean>} true
      */
     buyListing = async (listingid, currencycontract, amount) => {
 
@@ -65,7 +65,7 @@ class HavenXMarketplace {
      * @param {number} tokenId 
      * @param {number} endtime Unix time format 
      * @param {number} amount 
-     * @returns {number} new item id
+     * @returns {Promise<number>} new item id
      */
     auctionNft = async (collectioncontract, tokenId, endtime, amount) => {
 
@@ -79,7 +79,7 @@ class HavenXMarketplace {
      * 
      * @param {number} auctionId 
      * @param {number} amount 
-     * @returns {true}
+     * @returns {Promise<boolean>} true
      */
     bidAuctionedNft = async (auctionId, amount) => {
 
